@@ -1,0 +1,29 @@
+---
+- hosts: webservers
+  become: yes
+  tasks:
+    - name: Update the apt-get of the ec2 instance
+      apt:
+        update_cache: yes
+
+    - name: Install apache2
+      apt:
+        name: apache2
+        state: present
+
+    # Example: Using Files
+    # - name: Copy my index.html file to the webserver
+    #   copy:
+    #     src: "index.html"
+    #     dest: "/var/www/html/"
+
+    # Example: Using Templates
+    - name: Copy the template file to the webserver
+      template:
+        src: "index.html.j2"
+        dest: "/var/www/html/index.html"
+
+    - name: Restart the apache2 service
+      service:
+        name: apache2
+        state: restarted

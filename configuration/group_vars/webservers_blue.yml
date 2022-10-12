@@ -1,0 +1,4 @@
+background_color: "blue"
+planets:
+  - "Neptune"
+  - "Earth"

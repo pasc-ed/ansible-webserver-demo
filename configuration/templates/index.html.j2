@@ -1,0 +1,14 @@
+<html>
+    <title>{{ title_text }}</title>
+    <body style="background-color: {{ background_color }};">
+        <h1>{% if region == "uk"%} {{ uk_message }}{% else %}{{ fr_message }}{% endif %}</h1>
+        <h3>This is a simple web page</h3>
+        <div>
+            <ul>
+            {% for p in planets %}
+                <li>{{ p | upper }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>
