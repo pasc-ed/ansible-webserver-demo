@@ -1,5 +1,5 @@
 resource "aws_instance" "web_server" {
-  count = 3
+  count = 1
 
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.medium"
