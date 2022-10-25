@@ -2,7 +2,7 @@ resource "aws_instance" "web_server" {
   count = 3
 
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.medium"
+  instance_type = "t2.medium"
 
   vpc_security_group_ids = [aws_security_group.web_server.id]
   key_name               = var.keypair
