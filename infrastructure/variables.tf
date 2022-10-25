@@ -21,3 +21,7 @@ variable "public_subnet" {
 variable "keypair" {
   default = "talent-academy-ec2"
 }
+
+variable "aws_region" {
+  description = "This is the region of our infrastructure"
+}
