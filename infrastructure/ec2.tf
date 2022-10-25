@@ -7,7 +7,7 @@ resource "aws_instance" "web_server" {
   subnet_id              = data.aws_subnet.public.id
 
   tags = {
-    Name = "web-server"
+    Name = "web-server-1"
   }
 }
 
