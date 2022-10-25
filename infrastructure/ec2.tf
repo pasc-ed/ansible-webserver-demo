@@ -40,7 +40,7 @@ resource "aws_security_group" "web_server" {
   }
 
   tags = {
-    Name = "ansible-web-server"
+    Name = "ansible-web-server-1"
   }
 }
 
