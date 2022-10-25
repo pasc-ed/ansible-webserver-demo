@@ -1,6 +1,4 @@
 resource "aws_instance" "web_server" {
-  count = 1
-
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.medium"
 
@@ -9,7 +7,7 @@ resource "aws_instance" "web_server" {
   subnet_id              = data.aws_subnet.public.id
 
   tags = {
-    Name = "web-server-${count.index + 1}"
+    Name = "web-server"
   }
 }
 
@@ -44,4 +42,20 @@ resource "aws_security_group" "web_server" {
   tags = {
     Name = "ansible-web-server"
   }
+}
+
+resource "aws_ebs_volume" "data_logs" {
+  availability_zone = "${var.aws_region}a"
+  size              = 8
+  type              = "gp3"
+
+  tags = {
+    Name = "data_log_vol"
+  }
+}
+
+resource "aws_volume_attachment" "data_log_att" {
+  device_name = "/dev/sdd"
+  volume_id   = aws_ebs_volume.data_logs.id
+  instance_id = aws_instance.web_server.id
 }
